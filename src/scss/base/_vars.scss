@@ -1,0 +1,28 @@
+:root {
+  --container-width: 1200px;
+  --container-padding: 15px;
+
+  // Fonts
+  --font-main: "Gilroy", sans-serif;
+
+  // Colors
+  --page-bg: #fff;
+  --text-color: #000;
+  --error-color: #ac182c;
+  --light-gray: #e8e8e8;
+  --green: #54994b;
+  --blue: #066f;
+
+  // Gradients
+  --btn-gradient: linear-gradient(88deg, #0041a4 3.4%, #00a386 98.93%);
+  --overlay-gradient: linear-gradient(180deg, rgb(0 102 255 / 0%) 31%, #000 100%);
+  --overlay-gradient-hover: linear-gradient(180deg, rgb(0 102 255 / 40%) 31%, #000 100%);
+
+  // Sizes
+  --laptop-size: 1199px;
+  --tablet-size: 959px;
+  --mobile-size: 599px;
+
+  // Border-radius
+  --main-border-radius: 20px;
+}
