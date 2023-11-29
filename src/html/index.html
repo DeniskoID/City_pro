@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" class="page">
 
 <head>
     <meta charset="UTF-8" />
@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="./css/main.css" />
 </head>
 
-<body>
+<body class="page-body">
     @@include('blocks/header.html')
-    <h1>Привет!</h1>
+    <main>
+        @@include('blocks/hero-section.html')
+        @@include('blocks/about-section.html')
+    </main>
     @@include('blocks/footer.html')
     <script src="./js/index.bundle.js"></script>
 </body>

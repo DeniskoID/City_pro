@@ -1,0 +1,12 @@
+.nav {
+  &__list {
+    display: flex;
+    column-gap: 2.08vw;
+    flex-wrap: wrap;
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: rem(18);
+  }
+}

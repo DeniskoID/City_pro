@@ -1,0 +1,54 @@
+.hero {
+  position: relative;
+  padding-top: rem(191);
+  height: rem(750);
+
+  &.slide-bg1::before,
+  &.slide-bg2::before,
+  &.slide-bg3::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--light-gray);
+    opacity: 0.1;
+    filter: saturate(0%);
+    inset: 0;
+  }
+
+  &.slide-bg1::before {
+    background-image: url("../img/hero-section/bg-1.jpg");
+  }
+
+  &.slide-bg2::before {
+    background-image: url("../img/hero-section/bg-2.jpg");
+  }
+
+  &.slide-bg3::before {
+    background-image: url("../img/hero-section/bg-3.jpg");
+  }
+
+  /* stylelint-disable-next-line order/order */
+  &__container {
+    position: relative;
+    height: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      box-shadow:
+        1000px 0 0 0 var(--white-color),
+        -1000px 0 0 0 var(--white-color);
+      background-image: url("../img/hero-section/cutter3.svg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+}

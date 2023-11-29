@@ -41,5 +41,8 @@
   },
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "dependencies": {
+    "swiper": "^11.0.5"
+  }
 }
