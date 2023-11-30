@@ -51,4 +51,50 @@
       background-repeat: no-repeat;
     }
   }
+
+  .circle-wrapper {
+    position: absolute;
+    right: 335px;
+    bottom: 323px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .circle {
+    position: absolute;
+  }
+
+  .circle::before {
+    content: "";
+    position: absolute;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(0deg, rgb(0 0 0 / 0%), #fff 100%);
+    inset: 0;
+  }
+
+  .circle:nth-child(1) {
+    width: 650px;
+    height: 650px;
+  }
+
+  .circle:nth-child(2) {
+    width: 850px;
+    height: 850px;
+  }
+
+  .circle:nth-child(3) {
+    width: 1135px;
+    height: 1135px;
+  }
 }
