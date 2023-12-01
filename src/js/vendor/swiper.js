@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import { ExpoScaleEase } from 'gsap/EasePack';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// import SplitType from 'split-type';
+import SplitType from 'split-type';
 
 gsap.registerPlugin(ExpoScaleEase, ScrollTrigger);
 
@@ -15,7 +15,7 @@ const swiper1 = new Swiper('.swiper', {
   modules: [Navigation, Pagination, Autoplay],
   spaceBetween: 30,
   slidesPerView: 1,
-  // loop: true,
+  loop: false,
   init: false,
   longSwipes: false,
   autoplay: {
@@ -26,36 +26,77 @@ const swiper1 = new Swiper('.swiper', {
   speed: 600,
   pagination: {
     el: '.swiper-pagination',
-    clickable: false,
+    clickable: true,
   },
   scrollbar: {
     el: '.swiper-scrollbar',
   },
+  on: {
+    init: function () {
+      contentAnimation(this);
+    },
+    afterInit: function () {},
+    slideChange: function () {
+      // this.slides[this.previousIndex].animation.pause(0);
+      this.slides[this.activeIndex].animation.restart();
+      changeCounter(this);
+    },
+    slideChangeTransitionStart: function () {
+      circlesScaleInit.restart();
+    },
+    slideChangeTransitionEnd: function () {
+      this.slides[this.previousIndex].animation.pause(0);
+    },
+  },
 });
 
-swiper1.on('init', function () {
-  swiper1.slides.forEach((slide) => {
-    let titles = slide.querySelector('.slide__title');
+swiper1.on('slideChange', function () {});
+
+// Content animation
+
+function contentAnimation(slider) {
+  slider.slides.forEach((slide) => {
+    let title = slide.querySelector('.slide__title');
+    let chars = new SplitType(title, { type: 'chars' });
+    let words = chars.lines;
     let button = slide.querySelector('.btn');
-    let tl = gsap.timeline({ Defaults: { paused: true } });
-    tl.from(titles, { xPercent: -50, opacity: 0, ease: 'expoScale(0.5,7,none)', duration: 1 }).from(
-      button,
-      { xPercent: -50, stagger: 0.02 },
-      '-=0.5',
+    let img = slide.querySelector('.slide__image');
+    let tl = gsap.timeline({ Defaults: { paused: false } });
+    gsap.set(button, { opacity: 0.7, yPercent: -10, xPercent: 0, scale: 0.97 });
+    tl.to(button, { opacity: 1, yPercent: 0, xPercent: 0, scale: 1, duration: 0.5, delay: 0.4 });
+    tl.from(
+      words,
+      {
+        scaleY: 0,
+        y: -20,
+        transformOrigin: 'left top',
+        stagger: 0.1,
+        duration: 0.3,
+        // rotate: 0,
+        // ease: 'back.out',
+        delay: 0.2,
+      },
+      '<',
     );
+    tl.from(img, { duration: 1, scale: 0.98 }, '<');
     slide.animation = tl;
     slide.animation.pause(0);
   });
-  swiper1.slides[0].animation.play();
-});
+  slider.slides[0].animation.play();
+}
 
-swiper1.on('slideChange afterInit init', function () {
-  let currentSlide = this.realIndex + 1;
-  document.querySelector('.counter-current').innerHTML = `${currentSlide < 10 ? '0' + currentSlide : currentSlide}`;
+// Change counter
 
-  let totalSlide = this.slides.length;
-  document.querySelector('.counter-total').innerHTML = `${totalSlide < 10 ? '0' + totalSlide : totalSlide}`;
-});
+function changeCounter(slider) {
+  let currentSlide = slider.realIndex + 1;
+  let currentCounter = document.querySelector('.counter-current');
+  let totalCounter = document.querySelector('.counter-total');
+  let totalSlide = slider.slides.length;
+
+  currentCounter.innerHTML = `${currentSlide < 10 ? '0' + currentSlide : currentSlide}`;
+
+  totalCounter.innerHTML = `${totalSlide < 10 ? '0' + totalSlide : totalSlide}`;
+}
 
 // Circles animation
 
@@ -70,60 +111,4 @@ let circlesScaleInit = circlesScale.from(circles, {
   ease: 'elastic.out(1.5,0.75)',
 });
 
-// =====================
-
-swiper1.on('slideChange', function () {
-  this.slides[this.realIndex].animation.restart();
-});
-swiper1.on('slideChangeTransitionStart', function () {
-  circlesScaleInit.restart();
-});
-
 export default swiper1;
-
-// //tweens
-// // gsap.to('.bg-first', {
-// //   scale: 1.1,
-// //   duration: 2,
-// //   repeat: -1,
-// //   yoyo: true,
-// //   ease: 'power1.inOut',
-// // });
-
-// // const splittedText = new SplitType('.split', { type: 'chars' });
-// // const chars = splittedText.chars;
-
-// // gsap.from(chars, {
-// //   yPercent: 450,
-// //   stagger: {
-// //     each: 0.05,
-// //     from: 'random',
-// //   },
-// //   ease: 'back.out',
-// // });
-
-// /*
-// gsap.from([chars[2], chars[12]], {
-//   rotation: 360,
-//   duration: 2,
-//   delay: 3,
-//   repeat: -1,
-// })
-// */
-
-// // const tl = gsap.timeline({ repeat: -1, duration: 2, delay: 2, yoyo: true });
-// // tl.to(chars[2], { rotation: 360 });
-// // tl.to(chars[12], { rotation: 360 });
-
-// // const horizontalPanels = gsap.utils.toArray('.horizontal .panel');
-// // const scrollTween = gsap.to(horizontalPanels, {
-// //   xPercent: -100 * (horizontalPanels.length - 1),
-// //   ease: 'none',
-// //   scrollTrigger: {
-// //     trigger: '.horizontal',
-// //     pin: true,
-// //     scrub: 1,
-// //     snap: 1 / (horizontalPanels.length - 1),
-// //     end: '+=3500',
-// //   },
-// // });
