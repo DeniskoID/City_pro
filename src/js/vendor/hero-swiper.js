@@ -18,11 +18,11 @@ const swiper1 = new Swiper('.swiper', {
   loop: false,
   init: false,
   longSwipes: false,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  },
+  // autoplay: {
+  //   delay: 5000,
+  //   disableOnInteraction: false,
+  //   pauseOnMouseEnter: true,
+  // },
   speed: 600,
   pagination: {
     el: '.swiper-pagination',
@@ -34,23 +34,23 @@ const swiper1 = new Swiper('.swiper', {
   on: {
     init: function () {
       contentAnimation(this);
+      changeBg(this);
     },
     afterInit: function () {},
     slideChange: function () {
-      // this.slides[this.previousIndex].animation.pause(0);
-      this.slides[this.activeIndex].animation.restart();
+      // this.slides[this.activeIndex].animation.restart();
       changeCounter(this);
+      changeBg(this);
     },
     slideChangeTransitionStart: function () {
       circlesScaleInit.restart();
+      this.slides[this.activeIndex].animation.restart();
     },
     slideChangeTransitionEnd: function () {
       this.slides[this.previousIndex].animation.pause(0);
     },
   },
 });
-
-swiper1.on('slideChange', function () {});
 
 // Content animation
 
@@ -61,9 +61,19 @@ function contentAnimation(slider) {
     let words = chars.lines;
     let button = slide.querySelector('.btn');
     let img = slide.querySelector('.slide__image');
+
     let tl = gsap.timeline({ Defaults: { paused: false } });
-    gsap.set(button, { opacity: 0.7, yPercent: -10, xPercent: 0, scale: 0.97 });
-    tl.to(button, { opacity: 1, yPercent: 0, xPercent: 0, scale: 1, duration: 0.5, delay: 0.4 });
+
+    gsap.set(button, { opacity: 0, yPercent: -10, xPercent: 0, scale: 0 });
+    tl.to(button, {
+      transformOrigin: 'center',
+      opacity: 1,
+      yPercent: 0,
+      xPercent: 0,
+      scale: 1,
+      duration: 0.5,
+      delay: 0.1,
+    });
     tl.from(
       words,
       {
@@ -74,11 +84,11 @@ function contentAnimation(slider) {
         duration: 0.3,
         // rotate: 0,
         // ease: 'back.out',
-        delay: 0.2,
+        delay: 0.1,
       },
       '<',
     );
-    tl.from(img, { duration: 1, scale: 0.98 }, '<');
+    tl.from(img, { duration: 0.8, opacity: 0, scale: 0.8 }, '<');
     slide.animation = tl;
     slide.animation.pause(0);
   });
@@ -110,5 +120,22 @@ let circlesScaleInit = circlesScale.from(circles, {
   stagger: 0.1,
   ease: 'elastic.out(1.5,0.75)',
 });
+
+// Change BG on hero-section
+
+function changeBg(slider) {
+  const section = document.querySelector('.hero');
+  const slideIndex = slider.activeIndex;
+  const bgArr = ['bg1', 'bg2', 'bg3'];
+  section.removeAttribute('style');
+  bgArr.forEach((bg, i) => {
+    if (slideIndex === i) {
+      section.setAttribute('data-bg', bg);
+      section.style.setProperty(`--${bg}-opacity`, '0.1');
+    } else {
+      // section.style.setProperty('--bg-opacity', '0');
+    }
+  });
+}
 
 export default swiper1;

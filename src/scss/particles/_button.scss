@@ -7,6 +7,7 @@
   opacity: 1;
 
   &--main-btn {
+    box-shadow: var(--green-shadow);
     background-image: linear-gradient(88deg, #0041a4 3.4%, #00a386 65%);
     background-size: 200% auto;
     transition: all 0.3s ease;

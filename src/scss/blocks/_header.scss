@@ -9,8 +9,16 @@
     align-items: center;
     justify-content: space-between;
     border-radius: rem(15);
-    padding: rem(22) rem(70);
+    padding: rem(22) clamp(1.25rem, -10.625rem + 20vw, 4.375rem);
     background-color: rgb(255 255 255);
+  }
+
+  &__logo {
+    transition: transform 0.3s ease-in-out;
+
+    @include hover {
+      transform: translateY(rem(2));
+    }
   }
 
   &__nav {
@@ -22,16 +30,33 @@
     display: flex;
     column-gap: rem(10);
     align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    @include hover {
+      .header__phone-icon {
+        transform: rotate(15deg);
+      }
+
+      .header__phone-number {
+        opacity: 0.8;
+      }
+    }
   }
 
   &__phone-icon {
     flex-shrink: 0;
     width: rem(30);
     height: rem(30);
+    transition: all 0.3s ease-in-out;
   }
 
   &__phone-number {
     font-weight: 700;
     font-size: rem(18);
+    transition: all 0.3s ease-in-out;
+  }
+
+  @media (max-width: 958px) {
+    // overflow-y: visible;
   }
 }

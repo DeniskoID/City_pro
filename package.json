@@ -43,6 +43,7 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.29",
     "gsap": "^3.12.3",
     "split-type": "^0.3.4",
     "swiper": "^11.0.5"
