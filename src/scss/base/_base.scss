@@ -26,6 +26,15 @@ a {
   color: inherit;
 }
 
+a:focus {
+  outline: none;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
 .btn-reset {
   border: none;
   padding: 0;

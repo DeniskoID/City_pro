@@ -1,23 +1,22 @@
-.nav-icon-btn {
-  --time: 0.1s;
-  --width: 40px;
-  --height: 30px;
-  --line-height: 1px;
-  --line-margin: 2;
-  --color: #fff;
-
-  display: flex;
+.mobile-nav-btn {
+  display: none;
   align-items: center;
   justify-content: center;
-  width: var(--width);
-  height: var(--height);
+  width: rem(40);
+  height: rem(30);
+  background-color: var(--color--white);
+
+  @media (max-width: 958px) {
+    display: flex;
+  }
 }
 
 .nav-icon {
   position: relative;
-  width: var(--width);
-  height: var(--line-height);
-  background-color: var(--color);
+  display: block;
+  width: rem(40);
+  height: rem(4);
+  background-color: var(--text-color);
 }
 
 .nav-icon::before,
@@ -26,20 +25,20 @@
   position: absolute;
   left: 0;
   display: block;
-  width: var(--width);
-  height: var(--line-height);
-  background-color: var(--color);
+  width: rem(40);
+  height: rem(4);
+  background-color: var(--text-color);
   transition:
-    transform var(--time) ease-in,
-    top var(--time) linear var(--time);
+    transform 0.1s ease-in,
+    top 0.1s linear 0.1s;
 }
 
 .nav-icon::before {
-  top: calc(var(--line-height) * -8);
+  top: calc(rem(1) * -8);
 }
 
 .nav-icon::after {
-  top: calc(var(--line-height) * 8);
+  top: calc(rem(1) * 8);
 }
 
 .nav-icon.nav-icon--active {
@@ -50,8 +49,8 @@
 .nav-icon.nav-icon--active::after {
   top: 0;
   transition:
-    top var(--time) linear,
-    transform var(--time) ease-in var(--time);
+    top 0.1s linear,
+    transform 0.1s ease-in 0.1s;
 }
 
 .nav-icon.nav-icon--active::before {

@@ -17,7 +17,7 @@ const swiper1 = new Swiper('.swiper', {
   slidesPerView: 1,
   loop: false,
   init: false,
-  longSwipes: false,
+  longSwipes: true,
   // autoplay: {
   //   delay: 5000,
   //   disableOnInteraction: false,
