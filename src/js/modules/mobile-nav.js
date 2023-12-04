@@ -21,7 +21,7 @@ function mobileNav() {
 
   mm.add('(max-width: 958px)', () => {
     gsap.set(nav, {
-      y: '-100vh',
+      y: '-1000vh',
     });
 
     gsap.set(socialItems, {

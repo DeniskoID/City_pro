@@ -2,8 +2,6 @@
   position: relative;
   padding-top: clamp(6rem, 0.115rem + 15.69vw, 11.875rem);
 
-  // height: rem(750);
-
   &[data-bg="bg1"]::before,
   &[data-bg="bg2"]::before,
   &[data-bg="bg3"]::before {
@@ -60,14 +58,16 @@
         display: none;
       }
     }
+
+    @media (max-width: 599px) {
+      padding-bottom: rem(100);
+    }
   }
 
   .circle-wrapper {
     position: absolute;
-    right: clamp(9.188rem, -2.635rem + 31.53vw, 20.813rem);
+    right: clamp(8.875rem, -3.082rem + 31.89vw, 20.813rem);
     bottom: clamp(10.688rem, 1.026rem + 25.76vw, 20.188rem);
-
-    // bottom: 323px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,8 +76,14 @@
     height: 1px;
     pointer-events: none;
 
-    @media screen and (max-width: 1199px) {
-      // right: 28vw;
+    @media (min-width: 990px) and (max-width: 1200px) {
+      right: clamp(16.563rem, -8.165rem + 38.64vw, 20.813rem);
+    }
+
+    @media (max-width: 599px) {
+      right: 50%;
+      top: clamp(6.813rem, 0.289rem + 32.62vw, 12.5rem);
+      bottom: unset;
     }
   }
 
@@ -100,24 +106,43 @@
   }
 
   .circle:nth-child(1) {
-    width: clamp(20rem, -0.975rem + 55.93vw, 40.625rem);
-    height: clamp(20rem, -0.975rem + 55.93vw, 40.625rem);
-
-    // height: 650px;
+    width: clamp(15.813rem, 6.79rem + 45.11vw, 40.625rem);
+    height: clamp(15.813rem, 6.79rem + 45.11vw, 40.625rem);
   }
 
   .circle:nth-child(2) {
-    width: 850px;
-    height: 850px;
+    width: clamp(20.688rem, 8.892rem + 58.98vw, 53.125rem);
+    height: clamp(20.688rem, 8.892rem + 58.98vw, 53.125rem);
   }
 
   .circle:nth-child(3) {
-    width: 1135px;
-    height: 1135px;
+    width: clamp(27.688rem, 11.938rem + 78.75vw, 71rem);
+    height: clamp(27.688rem, 11.938rem + 78.75vw, 71rem);
   }
 
-  // &__btn.btn--main-btn {
-  //   padding-right: clamp(2.188rem, 1.624rem + 1.5vw, 2.75rem);
-  //   padding-left: clamp(2.188rem, 1.624rem + 1.5vw, 2.75rem);
-  // }
+  &__slider-handler {
+    position: absolute;
+    left: clamp(1.25rem, -28.087rem + 44.37vw, 5.188rem);
+    bottom: rem(155);
+
+    @media (max-width: 1025px) {
+      bottom: clamp(1.625rem, -3.14rem + 12.71vw, 5rem);
+    }
+
+    @media (max-width: 599px) {
+      left: 50%;
+      width: 90vw;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 599px) {
+    padding-top: clamp(6.25rem, 4.099rem + 10.75vw, 8.125rem);
+  }
+
+  @media (max-width: 599px) {
+    &__btn {
+      width: 90vw;
+    }
+  }
 }

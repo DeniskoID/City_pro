@@ -18,11 +18,11 @@ const swiper1 = new Swiper('.swiper', {
   loop: false,
   init: false,
   longSwipes: true,
-  // autoplay: {
-  //   delay: 5000,
-  //   disableOnInteraction: false,
-  //   pauseOnMouseEnter: true,
-  // },
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
   speed: 600,
   pagination: {
     el: '.swiper-pagination',
@@ -56,7 +56,7 @@ const swiper1 = new Swiper('.swiper', {
 
 function contentAnimation(slider) {
   slider.slides.forEach((slide) => {
-    let title = slide.querySelector('.slide__title');
+    let title = slide.querySelector('.slide__title-helper');
     let chars = new SplitType(title, { type: 'chars' });
     let words = chars.lines;
     let button = slide.querySelector('.btn');
