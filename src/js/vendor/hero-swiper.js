@@ -1,12 +1,6 @@
 import { gsap } from 'gsap';
-import { ExpoScaleEase } from 'gsap/EasePack';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import SplitType from 'split-type';
-
-gsap.registerPlugin(ExpoScaleEase, ScrollTrigger);
-
-// gsap.registerPlugin(ExpoScaleEase);
 
 import Swiper from 'swiper';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';

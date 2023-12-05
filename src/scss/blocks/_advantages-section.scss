@@ -1,0 +1,18 @@
+.advantages {
+  padding-bottom: rem(100);
+  background-color: var(--white-color);
+
+  // &__container {
+  // }
+  // &__wrapper {
+  // }
+  &__list {
+    display: grid;
+    column-gap: rem(30);
+    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+  }
+
+  &__item {
+    text-align: center;
+  }
+}
