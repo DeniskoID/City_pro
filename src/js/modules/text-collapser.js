@@ -1,66 +1,84 @@
 import { gsap } from 'gsap';
+import { resizeWidthOnly } from '../utilits/resize-observer';
 
 const textCollapser = function (collBtn, collContainer, minHeight) {
   const btnContainer = document.querySelector(collBtn);
   const collapseBtn = document.querySelector(`${collBtn} .text-collapser__btn`);
-  const collapseContainer = document.querySelector(collContainer);
+  const textContainer = document.querySelector(`${collContainer} .collapsed-container`);
+  const collapsedContainer = document.querySelector(collContainer);
 
-  const elHeight = collapseContainer.clientHeight;
+  function setStates() {
+    setTimeout(function () {
+      let sumHeight = textContainer.offsetHeight;
 
-  btnContainer.style.setProperty('--scale', 1);
-  collapseContainer.style.setProperty('--mb', 0);
-
-  //Gsap interactions
-
-  let mm = gsap.matchMedia();
-
-  let isOpen = false;
-
-  const colapsTl = gsap.timeline({
-    defaults: {
-      ease: 'power4.inOut',
-      duration: 1,
-    },
-  });
-
-  mm.add('(max-width: 390px)', () => {
-    gsap.set(collapseContainer, { css: { height: minHeight } });
-    gsap.set(collapseBtn, { transformPerspective: 500 });
-
-    colapsTl.to(collapseContainer, { css: { height: elHeight } });
-    colapsTl.to(
-      collapseBtn,
-      {
-        duration: 1,
-        scale: 1.5,
-        rotationX: 180,
-        rotationY: 0,
-        x: 0,
-        y: 0,
-        z: -200,
-      },
-      '<',
-    );
-
-    colapsTl.pause();
-  });
-
-  // ====================
-
-  collapseBtn.addEventListener('click', () => {
-    if (!isOpen) {
-      collapseContainer.classList.add('expanded');
-      collapseContainer.style.setProperty('--mb', '20px');
-      colapsTl.play();
-      btnContainer.style.setProperty('--scale', 0);
-      isOpen = true;
-    } else {
-      colapsTl.reverse();
-      collapseContainer.classList.remove('expanded');
-      collapseContainer.style.setProperty('--mb', 0);
       btnContainer.style.setProperty('--scale', 1);
-      isOpen = false;
-    }
+
+      //Gsap interactions
+
+      let mm = gsap.matchMedia();
+
+      let isOpen = false;
+
+      const colapsTl = gsap.timeline({
+        defaults: {
+          ease: 'power4.inOut',
+          duration: 1,
+        },
+      });
+
+      mm.add('(max-width: 390px)', () => {
+        gsap.set(collapsedContainer, { css: { height: minHeight } });
+        gsap.set(collapseBtn, { transformPerspective: 500 });
+
+        colapsTl.to(collapsedContainer, { css: { height: sumHeight } });
+        // colapsTl.from(collapsedContainer, { css: { height: minHeight } });
+        colapsTl.to(
+          collapseBtn,
+          {
+            duration: 1,
+            scale: 1.5,
+            rotationX: 180,
+            rotationY: 0,
+            x: 0,
+            y: 0,
+            z: -200,
+          },
+          '<',
+        );
+
+        colapsTl.pause();
+      });
+
+      // ====================
+
+      collapseBtn.addEventListener('click', () => {
+        if (!isOpen) {
+          collapsedContainer.classList.add('expanded');
+          colapsTl.play();
+          btnContainer.style.setProperty('--scale', 0);
+          isOpen = true;
+        } else {
+          colapsTl.reverse();
+          collapsedContainer.classList.remove('expanded');
+          btnContainer.style.setProperty('--scale', 1);
+          isOpen = false;
+        }
+      });
+
+      resizeWidthOnly(() => {
+        if (isOpen) {
+          colapsTl.reverse();
+          collapsedContainer.classList.remove('expanded');
+          btnContainer.style.setProperty('--scale', 1);
+          isOpen = false;
+        }
+      });
+    }, 350);
+  }
+
+  setStates();
+  resizeWidthOnly(() => {
+    setStates();
   });
 };
 

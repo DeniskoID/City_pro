@@ -8,11 +8,19 @@
   // }
   &__list {
     display: grid;
-    column-gap: rem(30);
     grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+    gap: rem(30);
   }
 
   &__item {
     text-align: center;
+  }
+
+  &__img {
+    margin-bottom: rem(23);
+  }
+
+  &__text {
+    font-weight: 700;
   }
 }
