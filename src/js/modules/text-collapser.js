@@ -1,5 +1,4 @@
 import { gsap } from 'gsap';
-import { resizeWidthOnly } from '../utilits/resize-observer';
 
 const textCollapser = function (collBtn, collContainer, minHeight) {
   const btnContainer = document.querySelector(collBtn);
@@ -7,79 +6,93 @@ const textCollapser = function (collBtn, collContainer, minHeight) {
   const textContainer = document.querySelector(`${collContainer} .collapsed-container`);
   const collapsedContainer = document.querySelector(collContainer);
 
-  function setStates() {
-    setTimeout(function () {
-      let sumHeight = textContainer.offsetHeight;
-
-      btnContainer.style.setProperty('--scale', 1);
-
-      //Gsap interactions
-
-      let mm = gsap.matchMedia();
-
-      let isOpen = false;
-
-      const colapsTl = gsap.timeline({
-        defaults: {
-          ease: 'power4.inOut',
-          duration: 1,
-        },
-      });
-
-      mm.add('(max-width: 390px)', () => {
-        gsap.set(collapsedContainer, { css: { height: minHeight } });
-        gsap.set(collapseBtn, { transformPerspective: 500 });
-
-        colapsTl.to(collapsedContainer, { css: { height: sumHeight } });
-        // colapsTl.from(collapsedContainer, { css: { height: minHeight } });
-        colapsTl.to(
-          collapseBtn,
-          {
-            duration: 1,
-            scale: 1.5,
-            rotationX: 180,
-            rotationY: 0,
-            x: 0,
-            y: 0,
-            z: -200,
-          },
-          '<',
-        );
-
-        colapsTl.pause();
-      });
-
-      // ====================
-
-      collapseBtn.addEventListener('click', () => {
-        if (!isOpen) {
-          collapsedContainer.classList.add('expanded');
-          colapsTl.play();
-          btnContainer.style.setProperty('--scale', 0);
-          isOpen = true;
-        } else {
-          colapsTl.reverse();
-          collapsedContainer.classList.remove('expanded');
-          btnContainer.style.setProperty('--scale', 1);
-          isOpen = false;
-        }
-      });
-
-      resizeWidthOnly(() => {
-        if (isOpen) {
-          colapsTl.reverse();
-          collapsedContainer.classList.remove('expanded');
-          btnContainer.style.setProperty('--scale', 1);
-          isOpen = false;
-        }
-      });
-    }, 350);
+  function getHeight() {
+    let height = gsap.getProperty(textContainer, 'height');
+    return Math.round(height);
   }
 
-  setStates();
-  resizeWidthOnly(() => {
-    setStates();
+  //   gsap.delayedCall(500, () => {})
+
+  function callAfterResize(func, delay) {
+    let dc = gsap.delayedCall(delay || 0.2, func).pause(),
+      handler = () => dc.restart(true);
+    window.addEventListener('resize', handler);
+    return handler;
+  }
+
+  btnContainer.style.setProperty('--scale', 1);
+
+  //Gsap interactions
+
+  let mm = gsap.matchMedia();
+
+  let isOpen = false;
+
+  const colapsTl = gsap.timeline({
+    defaults: {
+      ease: 'power4.inOut',
+      duration: 1,
+    },
   });
+
+  mm.add('(max-width: 390px)', () => {
+    gsap.set(collapseBtn, { transformPerspective: 500 });
+    // colapsTl.fromTo(collapsedContainer, { css: { height: minHeight } }, { css: { height: getHeight() } });
+
+    colapsTl.from(collapsedContainer, { css: { height: minHeight } });
+
+    colapsTl.to(
+      collapseBtn,
+      {
+        duration: 1,
+        scale: 1.5,
+        rotationX: 180,
+        rotationY: 0,
+        x: 0,
+        y: 0,
+        z: -200,
+      },
+      '<',
+    );
+
+    colapsTl.pause();
+
+    // gsap.delayedCall(0.3, setAnim);
+    // gsap.delayedCall(0.3, updateHeight);
+
+    callAfterResize(() => {
+      resizeWidth();
+      getHeight();
+      gsap.delayedCall(0.3, getHeight);
+
+      // gsap.killTweensOf(collapsedContainer, 'height');
+    });
+  });
+
+  // ====================
+
+  collapseBtn.addEventListener('click', () => {
+    if (!isOpen) {
+      collapsedContainer.classList.add('expanded');
+      colapsTl.play();
+      btnContainer.style.setProperty('--scale', 0);
+      isOpen = true;
+    } else {
+      colapsTl.reverse();
+      collapsedContainer.classList.remove('expanded');
+      btnContainer.style.setProperty('--scale', 1);
+      isOpen = false;
+    }
+  });
+
+  function resizeWidth() {
+    if (isOpen) {
+      colapsTl.reverse();
+      collapsedContainer.classList.remove('expanded');
+      btnContainer.style.setProperty('--scale', 1);
+      isOpen = false;
+    }
+  }
 };
 
 export default textCollapser;
