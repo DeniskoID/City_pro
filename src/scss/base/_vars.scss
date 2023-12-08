@@ -31,4 +31,7 @@
 
   // Border-radius
   --main-border-radius: rem(20);
+
+  // Intervals
+  --mb-sections: clamp(3.125rem, 1.989rem + 5.68vw, 6.25rem);
 }

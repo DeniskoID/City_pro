@@ -12,7 +12,7 @@
   min-width: 320px;
   font-size: 16px;
   color: var(--text-color);
-  background-color: var(--light-gray);
+  background-color: var(--white-color);
 }
 
 img {
@@ -46,4 +46,13 @@ a:focus-visible {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.section-title {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-size: clamp(2.188rem, 1.96rem + 1.14vw, 2.813rem);
+  text-transform: uppercase;
+  color: var(--soft-dark);
 }

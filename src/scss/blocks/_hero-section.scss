@@ -1,19 +1,21 @@
 .hero {
   position: relative;
+  margin-bottom: clamp(5rem, 3.182rem + 9.09vw, 10rem);
   padding-top: clamp(6rem, 0.115rem + 15.69vw, 11.875rem);
+  background-color: var(--light-gray);
 
   &[data-bg="bg1"]::before,
   &[data-bg="bg2"]::before,
   &[data-bg="bg3"]::before {
     content: "";
     position: absolute;
-    z-index: -1;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: var(--light-gray);
     opacity: 0;
     filter: saturate(0%);
+    isolation: isolate;
     transition: all 1s ease;
     inset: 0;
   }

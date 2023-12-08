@@ -1,8 +1,8 @@
 .services {
+  background-color: var(--light-gray);
+
   &__container {
     position: relative;
-    padding-top: rem(60);
-    padding-bottom: rem(100);
 
     &::before {
       content: "";
@@ -15,22 +15,44 @@
       background-size: cover;
       background-repeat: no-repeat;
       transform: translateX(-50%);
+
+      @media (max-width: 767px) {
+        top: rem(-49);
+        width: rem(320);
+        background-image: url("../img/services/services-bg-topm.svg");
+      }
     }
+  }
+
+  &__title {
+    bottom: rem(20);
+    line-height: 0;
+    text-align: center;
   }
 
   &__list {
     display: flex;
-    gap: rem(30);
+    padding-top: clamp(2.125rem, 1.534rem + 2.95vw, 3.75rem);
+    padding-bottom: calc(clamp(5.125rem, 4.004rem + 3vw, 6.25rem));
+    gap: clamp(1.25rem, -1.237rem + 4.15vw, 1.875rem);
+
+    @media (max-width: 599px) {
+      padding-bottom: rem(82);
+    }
+
+    @media (max-width: 959px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__item {
-    --grad1: linear-gradient(180deg, rgb(0 0 0 / 20%) 28%, rgb(0 102 255 / 30%) 54%, #000 99%);
+    --grad1: linear-gradient(rgb(0 0 0 / 20%) 28%, rgb(0 102 255 / 30%) 54%, #000 99%);
 
     position: relative;
     overflow: hidden;
     border-radius: rem(20);
     padding-top: rem(172);
-    width: calc(100% / 4 - 90px / 4);
+    width: calc(100% / 4);
     min-height: rem(500);
     background-position: center;
     background-size: cover;
@@ -52,6 +74,14 @@
     &:nth-child(4) {
       background-image: var(--grad1), url("../img/services/sprayer.jpg");
     }
+
+    @media (max-width: 959px) {
+      flex: 1 1 40%;
+    }
+
+    @media (max-width: 499px) {
+      flex-basis: 100%;
+    }
   }
 
   &__content {
@@ -70,6 +100,7 @@
     font-size: rem(20);
     text-align: center;
     color: var(--white-color);
+    pointer-events: none;
   }
 
   &__button {
@@ -87,6 +118,7 @@
       width: 100%;
       height: rem(210);
       background-color: var(--blue);
+      transition: all 0.4s ease-in-out;
     }
 
     &::after {
@@ -103,6 +135,16 @@
       transform: translate(-50%, -50%) rotate(180deg);
       transform-origin: center;
     }
+
+    @include hover {
+      &::before {
+        bottom: 0;
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+    }
   }
 
   &__button-text {
@@ -113,5 +155,18 @@
     font-size: rem(25);
     line-height: 100%;
     color: var(--white-color);
+  }
+
+  &__slider-handler {
+    position: absolute;
+    left: 50%;
+    bottom: rem(25);
+    display: none;
+    width: 90%;
+    transform: translateX(-50%);
+
+    @media (max-width: 499px) {
+      display: flex;
+    }
   }
 }

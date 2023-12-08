@@ -1,6 +1,6 @@
 .curved-bg {
   position: relative;
-  border-radius: rem(10) rem(10) rem(35) rem(35);
+  border-radius: rem(35) rem(35) rem(35) rem(35);
   /* stylelint-disable-next-line order/properties-order */
   padding-right: clamp(1.25rem, -11.185rem + 20.75vw, 4.375rem);
   /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
@@ -10,8 +10,6 @@
     content: "";
     position: absolute;
     left: 0;
-    top: rem(-85);
-    width: 100%;
     height: rem(100);
     background-size: cover;
     background-repeat: no-repeat;
