@@ -6,7 +6,7 @@
   background-color: var(--white-color);
 
   &__container {
-    // padding-bottom: clamp(3.125rem, 1.989rem + 5.68vw, 6.25rem);
+    position: relative;
 
     @media (max-width: 390px) {
       padding-right: 0;
@@ -19,14 +19,13 @@
   }
 
   &__section-title {
-    bottom: rem(20);
     padding-left: clamp(1.25rem, -11.185rem + 20.75vw, 4.375rem);
-    line-height: 0;
 
     @media (max-width: 767px) {
-      margin-bottom: 0;
+      left: 50%;
       padding-left: 0;
       text-align: center;
+      transform: translateX(-50%);
     }
   }
 

@@ -49,7 +49,8 @@ a:focus-visible {
 }
 
 .section-title {
-  position: relative;
+  position: absolute;
+  top: rem(-42);
   z-index: 1;
   font-weight: 700;
   font-size: clamp(2.188rem, 1.96rem + 1.14vw, 2.813rem);

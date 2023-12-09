@@ -14,3 +14,6 @@ mobileNav();
 
 import textCollapser from './modules/text-collapser.js';
 textCollapser('.text-collapser', '[collapsed]', '195px');
+
+import servicesCardHover from './modules/gsap-interactions.js';
+servicesCardHover();
