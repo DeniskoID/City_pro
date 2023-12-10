@@ -3,6 +3,7 @@
 
   &__container {
     position: relative;
+    isolation: isolate;
 
     &::before {
       content: "";

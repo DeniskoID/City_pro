@@ -2,9 +2,7 @@ import Lenis from '@studio-freight/lenis';
 
 const lenis = new Lenis();
 
-lenis.on('scroll', () => {
-  // console.log(e);
-});
+lenis.stop();
 
 function raf(time) {
   lenis.raf(time);
@@ -12,3 +10,5 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
+export default lenis;

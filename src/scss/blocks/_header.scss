@@ -17,6 +17,7 @@
     border-radius: rem(15);
     padding: rem(22) clamp(1.25rem, -10.625rem + 20vw, 4.375rem);
     background-color: rgb(255 255 255);
+    backdrop-filter: blur(20px);
 
     @media (max-width: 958px) {
       justify-content: flex-start;

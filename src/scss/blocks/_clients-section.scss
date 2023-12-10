@@ -41,6 +41,10 @@
     padding-bottom: clamp(5.625rem, 4.034rem + 7.95vw, 10rem);
     background-color: var(--white-color);
     gap: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+
+    @media (max-width: 599px) {
+      grid-template-columns: repeat(auto-fit, minmax(rem(280), 1fr));
+    }
   }
 
   &__item {

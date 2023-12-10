@@ -1,13 +1,20 @@
-// import mobileNav from './modules/mobile-nav.js';
-// mobileNav();
+import lenis from './vendor/lenis.js';
+lenis.start();
 
-import './vendor/lenis.js';
+import buttonToTop from './modules/to-top-button.js';
+buttonToTop();
 
 import swiper1 from './vendor/hero-swiper.js';
 swiper1.init();
 
 import initMobileSwiper from './vendor/services-swiper.js';
 initMobileSwiper();
+
+import portfolioSwiper from './vendor/portfolio-swiper.js';
+portfolioSwiper.init();
+
+import menuBgAnimation from './modules/nav-bg.js';
+menuBgAnimation();
 
 import mobileNav from './modules/mobile-nav.js';
 mobileNav();

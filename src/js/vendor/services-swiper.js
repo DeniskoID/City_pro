@@ -12,14 +12,33 @@ function initMobileSwiper() {
       spaceBetween: 20,
       slidesPerView: 1,
       loop: false,
-      // init: false,
       longSwipes: true,
       speed: 600,
       pagination: {
         el: '.service-pagination',
         clickable: true,
       },
+      on: {
+        init: function () {
+          changeCounter(this);
+        },
+        slideChange: function () {
+          changeCounter(this);
+        },
+      },
     });
+  }
+
+  function changeCounter(slider) {
+    const counterElem = '.services__slider-handler';
+    let currentSlide = slider.activeIndex + 1;
+    let currentCounter = document.querySelector(`${counterElem} .counter-current`);
+    let totalCounter = document.querySelector(`${counterElem} .counter-total`);
+    let totalSlide = slider.slides.length;
+
+    currentCounter.innerHTML = `${currentSlide < 10 ? '0' + currentSlide : currentSlide}`;
+
+    totalCounter.innerHTML = `${totalSlide < 10 ? '0' + totalSlide : totalSlide}`;
   }
 
   function destroySwiper() {
@@ -33,6 +52,8 @@ function initMobileSwiper() {
     if (window.innerWidth <= 500) {
       if (!mySwiper) {
         initSwiper();
+      } else {
+        mySwiper.update();
       }
     } else {
       destroySwiper();
@@ -44,5 +65,4 @@ function initMobileSwiper() {
   window.addEventListener('resize', handleResize);
 }
 
-// Вызываем функцию инициализации Swiper
 export default initMobileSwiper;

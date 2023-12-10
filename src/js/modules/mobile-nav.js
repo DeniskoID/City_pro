@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import lenis from '../vendor/lenis';
 
 function mobileNav() {
   const navBtn = document.querySelector('.mobile-nav-btn');
@@ -62,14 +63,12 @@ function mobileNav() {
     if (!menuOpen) {
       navTl.play();
       menuIcon.classList.add('nav-icon--active');
-      document.body.classList.add('no-scroll');
-      document.documentElement.classList.remove('lenis');
+      lenis.stop();
       menuOpen = true;
     } else {
       navTl.reverse();
       menuIcon.classList.remove('nav-icon--active');
-      document.body.classList.remove('no-scroll');
-      document.documentElement.classList.add('lenis');
+      lenis.start();
       menuOpen = false;
     }
   });

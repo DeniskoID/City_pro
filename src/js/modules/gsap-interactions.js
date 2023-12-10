@@ -57,11 +57,15 @@ export default function servicesCardHover() {
       '-=0.09',
     );
 
-    btnTl.to(serviceBtn, {
-      '--btn-rotate': '0deg',
-      duration: 0.5,
-      ease: 'back.out',
-    });
+    btnTl.to(
+      serviceBtn,
+      {
+        '--btn-rotate': '0deg',
+        duration: 0.3,
+        ease: 'back.out',
+      },
+      '<',
+    );
 
     btnTl.from(
       words,

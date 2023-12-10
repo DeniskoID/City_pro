@@ -1,0 +1,31 @@
+.button-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  border-radius: 50%;
+  width: clamp(6.25rem, 0.493rem + 12.01vw, 9.5rem);
+  background-color: #79aeff;
+  opacity: 0;
+  visibility: hidden;
+  isolation: isolate;
+  transition: scale 0.2s ease-in-out;
+  aspect-ratio: 1;
+  scale: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    width: rem(54);
+    height: rem(29);
+    background-image: url("../img/utils-icons/up-to.svg");
+    transform: translate(-50%, -50%);
+  }
+
+  @include hover {
+    &:active {
+      scale: 0.9;
+    }
+  }
+}

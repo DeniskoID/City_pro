@@ -50,10 +50,11 @@ a:focus-visible {
 
 .section-title {
   position: absolute;
-  top: rem(-42);
+  top: rem(-38);
   z-index: 1;
   font-weight: 700;
   font-size: clamp(2.188rem, 1.96rem + 1.14vw, 2.813rem);
+  line-height: 1;
   text-transform: uppercase;
   color: var(--soft-dark);
 }

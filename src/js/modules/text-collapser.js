@@ -11,8 +11,6 @@ const textCollapser = function (collBtn, collContainer, minHeight) {
     return Math.round(height);
   }
 
-  //   gsap.delayedCall(500, () => {})
-
   function callAfterResize(func, delay) {
     let dc = gsap.delayedCall(delay || 0.2, func).pause(),
       handler = () => dc.restart(true);
@@ -37,8 +35,6 @@ const textCollapser = function (collBtn, collContainer, minHeight) {
 
   mm.add('(max-width: 390px)', () => {
     gsap.set(collapseBtn, { transformPerspective: 500 });
-    // colapsTl.fromTo(collapsedContainer, { css: { height: minHeight } }, { css: { height: getHeight() } });
-
     colapsTl.from(collapsedContainer, { css: { height: minHeight } });
 
     colapsTl.to(
@@ -57,15 +53,10 @@ const textCollapser = function (collBtn, collContainer, minHeight) {
 
     colapsTl.pause();
 
-    // gsap.delayedCall(0.3, setAnim);
-    // gsap.delayedCall(0.3, updateHeight);
-
     callAfterResize(() => {
       resizeWidth();
       getHeight();
       gsap.delayedCall(0.3, getHeight);
-
-      // gsap.killTweensOf(collapsedContainer, 'height');
     });
   });
 

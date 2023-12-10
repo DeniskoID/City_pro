@@ -1,0 +1,118 @@
+.portfolio {
+  margin-bottom: clamp(7.5rem, 6.591rem + 4.55vw, 10rem);
+
+  &__container {
+    position: relative;
+
+    @media (max-width: 390px) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  &__title {
+    padding-left: clamp(1.25rem, -11.185rem + 20.75vw, 4.375rem);
+    max-width: 300px;
+
+    @media (max-width: 767px) {
+      left: 50%;
+      padding-left: 0;
+      text-align: center;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    padding-top: clamp(3.75rem, 2.841rem + 4.55vw, 6.25rem);
+    height: rem(500);
+    background-color: var(--light-gray);
+    isolation: isolate;
+
+    &::before {
+      top: rem(-58);
+      z-index: -1;
+      width: rem(602);
+      background-image: url("../img/portfolio/portfolio-bg-top.svg");
+
+      @media (max-width: 767px) {
+        top: rem(-49);
+        width: rem(320);
+        background-image: url("../img/portfolio/portfolio-bg-topm.svg");
+      }
+    }
+
+    @media (max-width: 767px) {
+      height: initial;
+    }
+  }
+
+  &__slider {
+    position: absolute;
+    left: clamp(1.25rem, -11.185rem + 20.75vw, 4.375rem);
+    right: clamp(1.25rem, -11.185rem + 20.75vw, 4.375rem);
+
+    @media (max-width: 767px) {
+      position: initial;
+      left: initial;
+      right: initial;
+    }
+  }
+
+  &__slides {
+  }
+
+  &__item {
+  }
+}
+
+.item {
+  display: flex;
+  gap: rem(30);
+
+  &__content {
+    flex: 0 1 rem(400);
+
+    @media (max-width: 767px) {
+      flex: initial;
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(20);
+    font-weight: 700;
+    font-size: clamp(1.125rem, 0.966rem + 0.8vw, 1.563rem);
+    color: var(--green);
+
+    @media (max-width: 767px) {
+      margin-bottom: clamp(0.625rem, 0.178rem + 2.24vw, 1.25rem);
+    }
+  }
+
+  &__text {
+    font-size: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
+
+    &:not(:last-child) {
+      margin-bottom: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
+    }
+  }
+
+  &__image-wrapper {
+    flex: 0 1 rem(600);
+    overflow: hidden;
+    border-radius: rem(20);
+    height: 100%;
+
+    @media (max-width: 767px) {
+      flex: initial;
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column-reverse;
+  }
+}
