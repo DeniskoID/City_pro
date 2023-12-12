@@ -17,7 +17,7 @@ const swiper1 = new Swiper('.swiper', {
     disableOnInteraction: false,
     pauseOnMouseEnter: true,
   },
-  speed: 600, 
+  speed: 600,
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
@@ -32,7 +32,6 @@ const swiper1 = new Swiper('.swiper', {
     },
     afterInit: function () {},
     slideChange: function () {
-      // this.slides[this.activeIndex].animation.restart();
       changeCounter(this);
       changeBg(this);
     },
@@ -76,8 +75,6 @@ function contentAnimation(slider) {
         transformOrigin: 'left top',
         stagger: 0.1,
         duration: 0.3,
-        // rotate: 0,
-        // ease: 'back.out',
         delay: 0.1,
       },
       '<',

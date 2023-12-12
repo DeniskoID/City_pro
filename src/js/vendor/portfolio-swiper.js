@@ -13,12 +13,6 @@ const portfolioSwiper = new Swiper('.portfolio-swiper', {
   loop: false,
   init: false,
   longSwipes: true,
-  // autoplay: {
-  //   delay: 5000,
-  //   disableOnInteraction: false,
-  //   pauseOnMouseEnter: true,
-  // },
-  // speed: 600,
   pagination: {
     el: '.portfolio-pagination',
     clickable: true,
@@ -33,9 +27,11 @@ const portfolioSwiper = new Swiper('.portfolio-swiper', {
       changeCounterMob(this);
       changeCounterDesk(this);
     },
-    // resize: function () {
-    //   contentAnimation(this);
-    // },
+    afterInit: function () {},
+    resize: function () {
+      // contentAnimation(this);
+      // this.slides[this.activeIndex].animation.restart();
+    },
     slideChange: function () {
       changeCounterMob(this);
       changeCounterDesk(this);
@@ -61,6 +57,8 @@ function contentAnimation(slider) {
     let tl = gsap.timeline({ Defaults: { paused: false } });
 
     let mm = gsap.matchMedia();
+    gsap.set(img, { transformOrigin: 'top', opacity: 0, scale: 0.9, height: 0 });
+    gsap.set(text, { transformOrigin: 'left top', autoAlpha: 0, scaleY: 0.8 });
 
     mm.add('(min-width: 768px)', () => {
       tl.from(words, {
@@ -72,11 +70,11 @@ function contentAnimation(slider) {
         delay: 0.1,
       });
 
-      tl.from(
+      tl.to(
         text,
         {
-          scaleY: 0,
-          autoAlpha: 0,
+          scaleY: 1,
+          autoAlpha: 1,
           transformOrigin: 'left top',
           stagger: 0.1,
           duration: 0.7,
@@ -84,10 +82,10 @@ function contentAnimation(slider) {
         '<',
       );
 
-      tl.from(img, { duration: 0.8, opacity: 0, scale: 0.7, height: 0 }, '<');
+      tl.to(img, { duration: 0.8, opacity: 1, scale: 1, height: '100%' }, '<');
     });
     mm.add('(max-width: 767px)', () => {
-      tl.from(img, { duration: 0.8, opacity: 0, scale: 0.7, height: 0 });
+      tl.to(img, { duration: 0.8, opacity: 1, scale: 1, height: '100%' });
 
       tl.from(
         words,
@@ -102,11 +100,11 @@ function contentAnimation(slider) {
         '<',
       );
 
-      tl.from(
+      tl.to(
         text,
         {
-          scaleY: 0,
-          autoAlpha: 0,
+          scaleY: 1,
+          autoAlpha: 1,
           transformOrigin: 'left top',
           stagger: 0.1,
           duration: 0.7,
@@ -118,10 +116,6 @@ function contentAnimation(slider) {
     slide.animation = tl;
     slide.animation.pause(0);
   });
-
-  // mm.add('(max-width: 767px)', () => {
-  //   // mobile setup code here...
-  // });
 
   slider.slides[0].animation.play();
 }

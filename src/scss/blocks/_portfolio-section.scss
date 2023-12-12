@@ -1,5 +1,5 @@
 .portfolio {
-  margin-bottom: clamp(7.5rem, 6.591rem + 4.55vw, 10rem);
+  margin-bottom: clamp(7.5rem, 3.795rem + 18.52vw, 17.688rem);
 
   &__container {
     position: relative;
@@ -12,7 +12,7 @@
 
   &__title {
     padding-left: clamp(1.25rem, -11.185rem + 20.75vw, 4.375rem);
-    max-width: 300px;
+    max-width: rem(300);
 
     @media (max-width: 767px) {
       left: 50%;
@@ -63,12 +63,6 @@
       right: initial;
     }
   }
-
-  // &__slides {
-  // }
-
-  // &__item {
-  // }
 
   &__navigation {
     position: absolute;

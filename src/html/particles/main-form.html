@@ -1,0 +1,28 @@
+<form action="/" class="main-form">
+    <div class="main-form__inputs">
+        <label for="name" class="main-form__label visually-hidden">Введите ваше имя</label>
+        <input id="name" class="main-form__input main-form__input--name" type="text" name="name" placeholder="Ваше имя"
+            required>
+
+        <label for="phone" class="main-form__label visually-hidden">Введите ваш телефон</label>
+        <input id="phone" class="main-form__input main-form__input--phone" type="tel" name="phone"
+            placeholder="Номер телефона" required>
+
+        <label for="message" class="main-form__label visually-hidden">Введите ваше сообщение</label>
+        <textarea id="message" class="main-form__input main-form__input--text" type="text" name="message"
+            placeholder="Ваше сообщение" rows="10"></textarea>
+    </div>
+
+
+    <label class="main-form__checkbox custom-checkbox">
+        <input type="checkbox" class="custom-checkbox__field" required>
+        <span class="custom-checkbox__content">
+            <span class="custom-checkbox__content-text">
+                Нажимая кнопку &laquo;ОТПРАВИТЬ&raquo; вы&nbsp;соглашаетесь на&nbsp;обработку ваших данных
+            </span>
+        </span>
+    </label>
+
+    <button class="main-form__btn btn" type="submit">Отправить</button>
+
+</form>

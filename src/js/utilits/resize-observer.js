@@ -9,7 +9,7 @@ export function resizeWidthOnly(a, b) {
       c.push(d);
       if (c[e] !== c[e - 1]) {
         clearTimeout(b);
-        b = setTimeout(a, 50);
+        b = setTimeout(a, 250);
       }
     }),
     a

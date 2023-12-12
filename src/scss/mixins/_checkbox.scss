@@ -1,0 +1,65 @@
+/* stylelint-disable */
+
+@mixin custom-checkbox {
+  position: relative;
+
+  &__field {
+    appearance: none;
+    position: absolute;
+  }
+
+  &__content {
+    position: relative;
+    display: block;
+    font-weight: 500;
+    font-size: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
+    padding-left: rem(50);
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 50%;
+      // border: 1px solid #000;
+      border-radius: rem(10);
+      width: 40px;
+      height: 40px;
+      box-sizing: border-box;
+      transform: translateY(50%);
+      background-color: var(--white-color);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 50%;
+      // top: rem(-10);
+      width: 40px;
+      height: 40px;
+      box-sizing: border-box;
+      background-image: url("../img/utils-icons/accept-mark.svg");
+      background-position: center;
+      background-size: 40px 40px;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transform: translateY(50%);
+      transition: opacity 0.3s ease-in-out;
+    }
+  }
+}
+
+.custom-checkbox__field:checked + .custom-checkbox__content::after {
+  opacity: 1;
+}
+
+.custom-checkbox__field:focus + .custom-checkbox__content::before {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.custom-checkbox__field:disabled + .custom-checkbox__content {
+  opacity: 0.4;
+  pointer-events: none;
+}

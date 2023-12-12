@@ -20,8 +20,8 @@ import mobileNav from './modules/mobile-nav.js';
 mobileNav();
 
 import textCollapser from './modules/text-collapser.js';
-textCollapser('.text-collapser', '[collapsed]', '195px');
-textCollapser('.portfolio__collapser', '[collapsed2]', '500px');
+textCollapser('.text-collapser', '.about__description', '195px');
+textCollapser('.portfolio__collapser', '.portfolio__collaps-helper', '500px');
 
 import servicesCardHover from './modules/gsap-interactions.js';
 servicesCardHover();

@@ -1,6 +1,8 @@
 import Swiper from 'swiper';
 import { Pagination } from 'swiper/modules';
 
+import { resizeWidthOnly } from '../utilits/resize-observer';
+
 function initMobileSwiper() {
   let mySwiper;
 
@@ -62,7 +64,8 @@ function initMobileSwiper() {
 
   // Вызываем handleResize при инициализации и при каждом изменении размеров окна
   handleResize();
-  window.addEventListener('resize', handleResize);
+
+  resizeWidthOnly(handleResize);
 }
 
 export default initMobileSwiper;
