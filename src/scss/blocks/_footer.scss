@@ -1,14 +1,136 @@
 .footer {
-	background-color: rgb(62, 62, 62);
-	padding: 50px 0;
-	font-size: 32px;
-    color: #fff;
+  background-color: var(--light-gray);
 
-	h1 {
-		font-size: 32px;
-	}
+  &__container {
+    @media (max-width: 390px) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
 
-	@media (max-width: 1200px) {
-		font-size: 26px;
-	}
+  &__wrapper {
+    --ptb: clamp(1.875rem, 1.42rem + 2.27vw, 3.125rem);
+    --plr: clamp(1.25rem, -11.185rem + 20.75vw, 4.375rem);
+
+    display: flex;
+    padding: var(--ptb) var(--plr);
+
+    @media (max-width: 958px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__content {
+    flex: 0 1 rem(400);
+    margin-right: clamp(1.25rem, -1.224rem + 4.13vw, 1.875rem);
+
+    @media (max-width: 958px) {
+      flex: initial;
+      margin-right: 0;
+      max-width: rem(500);
+      text-align: center;
+    }
+  }
+
+  &__logo {
+    display: block;
+    margin-bottom: clamp(1.125rem, 0.625rem + 2.5vw, 2.5rem);
+    width: clamp(12.5rem, 10.341rem + 10.8vw, 18.438rem);
+    transition: all 0.3s ease-in-out;
+
+    @include hover {
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 958px) {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  &__text {
+    margin-bottom: clamp(1.125rem, 0.398rem + 3.64vw, 3.125rem);
+    font-weight: 500;
+    font-size: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
+  }
+
+  &__copyright {
+    font-weight: 600;
+
+    &--clone-desk {
+      @media (max-width: 958px) {
+        display: none;
+      }
+    }
+
+    &--clone-mob {
+      margin-bottom: clamp(1.25rem, 0.568rem + 3.41vw, 3.125rem);
+      text-align: center;
+
+      @media (min-width: 958px) {
+        display: none;
+      }
+    }
+  }
+
+  &__menu {
+    margin-right: clamp(1.25rem, -9.142rem + 17.36vw, 3.875rem);
+
+    @media (max-width: 958px) {
+      margin-right: 0;
+    }
+  }
+
+  &__nav {
+    margin-bottom: rem(28);
+    max-width: rem(125);
+    font-size: rem(16);
+
+    .nav__item:not(:last-of-type) {
+      margin-bottom: rem(21);
+    }
+
+    .nav__link {
+      font-size: rem(16);
+    }
+
+    @media (max-width: 958px) {
+      display: none;
+    }
+  }
+
+  &__policy {
+    display: block;
+    margin-bottom: clamp(1.25rem, 0.568rem + 3.41vw, 3.125rem);
+    font-weight: 500;
+    color: #8c8c8c;
+
+    @media (max-width: 958px) {
+      text-align: center;
+    }
+  }
+
+  &__creator {
+    @media (max-width: 958px) {
+      text-align: center;
+    }
+  }
+
+  &__creator-text {
+    vertical-align: middle;
+    font-weight: 600;
+  }
+
+  &__creator-logo {
+    @include hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__contacts {
+    @media (max-width: 958px) {
+      display: none;
+    }
+  }
 }

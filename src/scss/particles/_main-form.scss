@@ -50,7 +50,12 @@
 
   &__btn {
     min-width: rem(270);
-    background-color: #73a56c;
+    background-color: #498c40;
+    transition: background-color 0.3s ease-in-out;
+
+    @include hover {
+      background-color: #328427;
+    }
 
     @media (max-width: 599px) {
       width: 100%;

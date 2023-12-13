@@ -1,4 +1,22 @@
 .social {
   display: flex;
   gap: rem(20);
+
+  &__item {
+    // transition: all 0.3s ease-in-out;
+
+    @include hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__link {
+    display: block;
+  }
+
+  &.mingap {
+    @media (min-width: 958px) {
+      gap: clamp(0.313rem, -3.399rem + 6.2vw, 1.25rem);
+    }
+  }
 }

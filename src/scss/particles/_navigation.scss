@@ -3,6 +3,7 @@
     display: flex;
     column-gap: 2.08vw;
     flex-wrap: wrap;
+    font-size: rem(18);
 
     @media (max-width: 958px) {
       flex-direction: column;
@@ -19,7 +20,7 @@
 
   &__link {
     font-weight: 600;
-    font-size: rem(18);
+    font-size: inherit;
     transition: color 0.2s ease-in-out;
 
     @include hover {

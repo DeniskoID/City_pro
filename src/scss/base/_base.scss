@@ -58,3 +58,11 @@ a:focus-visible {
   text-transform: uppercase;
   color: var(--soft-dark);
 }
+
+.policy {
+  text-decoration: underline;
+
+  @include hover {
+    color: var(--dark-blue);
+  }
+}
