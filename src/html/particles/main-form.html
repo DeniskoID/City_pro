@@ -1,21 +1,21 @@
-<form action="/" class="main-form">
-    <div class="main-form__inputs">
-        <label for="name" class="main-form__label visually-hidden">Введите ваше имя</label>
-        <input id="name" class="main-form__input main-form__input--name" type="text" name="name" placeholder="Ваше имя"
-            required>
+<form action="/" class="main-form main-form--@@mod">
+    <div class="main-form__inputs main-form__inputs--@@mod">
+        <label for="@@idname" class="main-form__label visually-hidden">Введите ваше имя</label>
+        <input id="@@idname" class="main-form__input main-form__input--name" type="text" name="name"
+            placeholder="Ваше имя" autocomplete="given-name">
 
-        <label for="phone" class="main-form__label visually-hidden">Введите ваш телефон</label>
-        <input id="phone" class="main-form__input main-form__input--phone" type="tel" name="phone"
-            placeholder="Номер телефона" required>
+        <label for="@@idtel" class="main-form__label visually-hidden">Введите ваш телефон</label>
+        <input id="@@idtel" class="main-form__input main-form__input--phone" type="tel" name="phone"
+            placeholder="Номер телефона*" required autocomplete="tel">
 
-        <label for="message" class="main-form__label visually-hidden">Введите ваше сообщение</label>
-        <textarea id="message" class="main-form__input main-form__input--text" name="message"
+        <label for="@@idmessage" class="main-form__label visually-hidden">Введите ваше сообщение</label>
+        <textarea id="@@idmessage" class="main-form__input main-form__input--text" name="message"
             placeholder="Ваше сообщение" rows="10"></textarea>
     </div>
 
 
-    <label class="main-form__checkbox custom-checkbox">
-        <input type="checkbox" class="custom-checkbox__field" required>
+    <label class="main-form__checkbox main-form__checkbox--@@mod custom-checkbox">
+        <input name="accept" type="checkbox" class="custom-checkbox__field" required>
         <span class="custom-checkbox__content">
             <span class="custom-checkbox__content-text">
                 Нажимая кнопку &laquo;ОТПРАВИТЬ&raquo; вы&nbsp;соглашаетесь на&nbsp;обработку ваших данных
@@ -23,6 +23,6 @@
         </span>
     </label>
 
-    <button class="main-form__btn btn" type="submit">Отправить</button>
+    <button class="main-form__btn main-form__btn--@@mod btn" type="submit">Отправить</button>
 
 </form>

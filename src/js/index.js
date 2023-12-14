@@ -25,3 +25,6 @@ textCollapser('.portfolio__collapser', '.portfolio__collaps-helper', '500px');
 
 import servicesCardHover from './modules/gsap-interactions.js';
 servicesCardHover();
+
+import modals from './modules/modals.js';
+modals();

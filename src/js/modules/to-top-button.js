@@ -48,7 +48,14 @@ function buttonToTop() {
     autoAlpha: 1,
   });
 
+  const tlb = gsap.timeline();
+
+  tlb.to(button, {
+    top: '55%',
+  });
+
   tl.pause(0);
+  tlb.pause(0);
 
   lenis.on('scroll', (e) => {
     const pageHeight = document.documentElement.clientHeight;
@@ -67,6 +74,8 @@ function buttonToTop() {
     (direction < 0 && actualScroll > 1000) || scrollHeight - 300 <= pageHeight + actualScroll
       ? tl.play()
       : tl.reverse();
+
+    scrollHeight - 300 <= pageHeight + actualScroll ? tlb.play() : tlb.reverse();
   });
 
   lenis.on('scroll', ScrollTrigger.update);
