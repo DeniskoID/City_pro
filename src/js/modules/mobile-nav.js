@@ -63,12 +63,24 @@ function mobileNav() {
     if (!menuOpen) {
       navTl.play();
       menuIcon.classList.add('nav-icon--active');
-      lenis.stop();
+      // lenis.stop();
       menuOpen = true;
     } else {
       navTl.reverse();
       menuIcon.classList.remove('nav-icon--active');
-      lenis.start();
+      // lenis.start();
+      menuOpen = false;
+    }
+  });
+
+  // Close opened menu after starting scroll
+
+  lenis.on('scroll', (e) => {
+    const velocity = Math.abs(Math.round(e.velocity));
+
+    if (menuOpen && velocity >= 10) {
+      navTl.reverse();
+      menuIcon.classList.remove('nav-icon--active');
       menuOpen = false;
     }
   });

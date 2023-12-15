@@ -12,11 +12,11 @@ const swiper1 = new Swiper('.swiper', {
   loop: false,
   init: false,
   longSwipes: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  },
+  // autoplay: {
+  //   delay: 5000,
+  //   disableOnInteraction: false,
+  //   pauseOnMouseEnter: true,
+  // },
   speed: 600,
   pagination: {
     el: '.swiper-pagination',

@@ -1,4 +1,4 @@
-<section class="about">
+<section id="about" class="about">
     <div class="container about__container">
         <h2 class="about__section-title section-title">О нас</h2>
         <div class="about__wrapper curved-bg">
@@ -24,11 +24,14 @@
                         разумом и должны быть подвергнуты целой серии независимых исследований.
                     </p>
                 </div>
-
             </div>
             <div class="about__image-wrapper">
-                <img class="about__image" loading="lazy" src="./img/about/people-with-sprayers.jpg" alt="Двое маляров в респираторах
+                <picture>
+                    <source srcset="./img/about/people-with-sprayers.avif" type="image/avif">
+                    <source srcset="./img/about/people-with-sprayers.webp" type="image/webp">
+                    <img class="about__image" loading="lazy" src="./img/about/people-with-sprayers.jpg" alt="Двое маляров в респираторах
                 красят балку">
+                </picture>
             </div>
         </div>
         @@include("../particles/text-collapser.html",{"class":"text-collapser"})

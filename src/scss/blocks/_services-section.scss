@@ -72,19 +72,39 @@
     }
 
     &:nth-child(1) {
-      background-image: var(--grad1), url("../img/services/fan.jpg");
+      background-image: var(--grad1),
+        image-set(
+          url("../img/services/fan.avif") type("image/avif"),
+          url("../img/services/fan.webp") type("image/webp"),
+          url("../img/services/fan.jpg") type("image/jpg")
+        );
     }
 
     &:nth-child(2) {
-      background-image: var(--grad1), url("../img/services/painting.jpg");
+      background-image: var(--grad1),
+        image-set(
+          url("../img/services/painting.avif") type("image/avif"),
+          url("../img/services/painting.webp") type("image/webp"),
+          url("../img/services/painting.jpg") type("image/jpg")
+        );
     }
 
     &:nth-child(3) {
-      background-image: var(--grad1), url("../img/services/building.jpg");
+      background-image: var(--grad1),
+        image-set(
+          url("../img/services/building.avif") type("image/avif"),
+          url("../img/services/building.webp") type("image/webp"),
+          url("../img/services/building.jpg") type("image/jpg")
+        );
     }
 
     &:nth-child(4) {
-      background-image: var(--grad1), url("../img/services/sprayer.jpg");
+      background-image: var(--grad1),
+        image-set(
+          url("../img/services/sprayer.avif") type("image/avif"),
+          url("../img/services/sprayer.webp") type("image/webp"),
+          url("../img/services/sprayer.jpg") type("image/jpg")
+        );
     }
 
     @media (max-width: 959px) {
