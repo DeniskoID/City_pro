@@ -10,9 +10,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="./css/main.css">
-    <script src="https://api-maps.yandex.ru/v3/?apikey=e614ddcd-4372-4beb-b29b-43ad259febe6&lang=ru_RU"></script>
+    <script src="https://api-maps.yandex.ru/v3/?apikey=5e11fe4b-14b4-401a-9c70-04e27afc9ac3&lang=ru_RU"></script>
 </head>
 
 <body class="page-body">
@@ -31,33 +30,27 @@
     @@include('particles/button-to-top.html')
     @@include('particles/modal.html')
     <script src="./js/index.bundle.js"></script>
-    <script type="text/javascript">
+    <script>
 
-        ymaps.ready(init);
-        var myMap;
+        initMap();
 
-        function init() {
+        async function initMap() {
+            await ymaps3.ready;
 
-            myMap = new ymaps.Map("map", {
-                center: [43.238253, 76.945465], // Координаты центра карты
-                zoom: 13 // Маштаб карты
-            });
+            const { YMap, YMapDefaultSchemeLayer } = ymaps3;
 
-            myMap.controls.add(
-                new ymaps.control.ZoomControl()  // Добавление элемента управления картой
+            const map = new YMap(
+                document.getElementById('map'),
+                {
+                    location: {
+                        center: [37.588144, 55.733842],
+                        zoom: 10
+                    }
+                }
             );
 
-            myPlacemark = new ymaps.Placemark([43.238253, 76.945465], { // Координаты метки объекта
-                balloonContent: "<div class='ya_map'>Заезжайте в гости!</div>" // Подсказка метки
-            }, {
-                preset: "twirl#redDotIcon" // Тип метки
-            });
-
-            myMap.geoObjects.add(myPlacemark); // Добавление метки
-            myPlacemark.balloon.open(); // Открытие подсказки метки
-
-        };
-
+            map.addChild(new YMapDefaultSchemeLayer());
+        }
     </script>
 </body>
 

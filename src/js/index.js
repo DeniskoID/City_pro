@@ -28,3 +28,6 @@ servicesCardHover();
 
 import modals from './modules/modals.js';
 modals();
+
+import toAnchor from './modules/anchor-navigation.js';
+toAnchor();
