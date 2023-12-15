@@ -52,6 +52,10 @@
     overflow: hidden;
     border-radius: rem(15);
     width: 100%;
+    background-image: url("../img/map/map.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     @media (max-width: 958px) {
       flex: initial;
