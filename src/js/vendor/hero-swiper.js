@@ -112,6 +112,7 @@ function changeCounter(slider) {
 
 let circles = document.querySelectorAll('.circle');
 const circlesScale = gsap.timeline();
+
 let circlesScaleInit = circlesScale.from(circles, {
   delay: 0,
   duration: 1.2,
