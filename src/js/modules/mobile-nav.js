@@ -58,15 +58,18 @@ function mobileNav() {
     navTl.pause();
   });
 
+  navBtn.setAttribute('aria-expanded', false);
   navBtn.addEventListener('click', () => {
     if (!menuOpen) {
       navTl.play();
       menuIcon.classList.add('nav-icon--active');
+      navBtn.setAttribute('aria-expanded', true);
       // lenis.stop();
       menuOpen = true;
     } else {
       navTl.reverse();
       menuIcon.classList.remove('nav-icon--active');
+      navBtn.setAttribute('aria-expanded', false);
       // lenis.start();
       menuOpen = false;
     }
@@ -80,6 +83,7 @@ function mobileNav() {
     if (menuOpen && velocity >= 10) {
       navTl.reverse();
       menuIcon.classList.remove('nav-icon--active');
+      navBtn.setAttribute('aria-expanded', false);
       menuOpen = false;
     }
   });
