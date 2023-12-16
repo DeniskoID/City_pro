@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-// import lenis from '../vendor/lenis';
+import lenis from '../vendor/lenis';
 
 const modals = () => {
   function bindModal(triggerSelector, modalSelector, closeSelector, closeClickOverlay = true) {
@@ -48,7 +48,7 @@ const modals = () => {
         windows.forEach((item) => {
           item.style.visibility = 'hidden';
         });
-        // lenis.stop();
+        lenis.stop();
         Tl.play();
         document.body.style.marginRight = `${scroll}px`;
       });
@@ -59,7 +59,7 @@ const modals = () => {
         item.style.visibility = 'hidden';
       });
       modal.style.visibility = 'hidden';
-      // lenis.start();
+      lenis.start();
       Tl.reverse();
       document.body.style.marginRight = `0px`;
       // document.body.classList.remove('modal-open');
@@ -70,7 +70,7 @@ const modals = () => {
         windows.forEach((item) => {
           item.style.visibility = 'hidden';
         });
-        // lenis.start();
+        lenis.start();
         Tl.reverse();
         modal.style.visibility = 'hidden';
         document.body.style.overflow = '';
