@@ -57,29 +57,38 @@ function contentAnimation(slider) {
 
     let tl = gsap.timeline({ Defaults: { paused: false } });
 
-    gsap.set(button, { opacity: 0, yPercent: -10, xPercent: 0, scale: 0 });
-    tl.to(button, {
-      transformOrigin: 'center',
-      opacity: 1,
-      yPercent: 0,
-      xPercent: 0,
-      scale: 1,
-      duration: 0.5,
-      delay: 0.1,
-    });
-    tl.from(
-      words,
-      {
-        scaleY: 0,
-        y: -20,
-        transformOrigin: 'left top',
-        stagger: 0.1,
-        duration: 0.3,
+    let mm = gsap.matchMedia();
+
+    mm.add('(min-width: 1024px)', () => {
+      gsap.set(button, { opacity: 0, yPercent: -10, xPercent: 0, scale: 0 });
+      tl.to(button, {
+        transformOrigin: 'center',
+        opacity: 1,
+        yPercent: 0,
+        xPercent: 0,
+        scale: 1,
+        duration: 0.5,
         delay: 0.1,
-      },
-      '<',
-    );
-    tl.from(img, { duration: 0.8, opacity: 0, scale: 0.8 }, '<');
+      });
+      tl.from(
+        words,
+        {
+          scaleY: 0,
+          y: -20,
+          transformOrigin: 'left top',
+          stagger: 0.1,
+          duration: 0.3,
+          delay: 0.1,
+        },
+        '<',
+      );
+      tl.from(img, { duration: 0.8, opacity: 0, scale: 0.8 }, '<');
+    });
+
+    mm.add('(max-width: 1023.9px)', () => {
+      // tl.from(img, { duration: 0.8, opacity: 1, scale: 0.8 });
+    });
+
     slide.animation = tl;
     slide.animation.pause(0);
   });

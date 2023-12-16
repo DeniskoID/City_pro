@@ -31,3 +31,6 @@ modals();
 
 import toAnchor from './modules/anchor-navigation.js';
 toAnchor();
+
+import showLazyMap from './modules/lazy-ymap.js';
+showLazyMap();

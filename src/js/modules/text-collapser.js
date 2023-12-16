@@ -33,7 +33,7 @@ const textCollapser = function (collBtn, collContainer, minHeight) {
     },
   });
 
-  mm.add('(max-width: 390px)', () => {
+  mm.add('(max-width: 431px)', () => {
     gsap.set(collapseBtn, { transformPerspective: 500 });
     colapsTl.from(collapsedContainer, { css: { height: minHeight } });
 
