@@ -71,13 +71,17 @@
       opacity: var(--grad-opacity, 0);
     }
 
+    // &:nth-child(1) {
+    //   background-image: var(--grad1),
+    //     image-set(
+    //       url("../img/services/fan.avif") type("image/avif"),
+    //       url("../img/services/fan.webp") type("image/webp"),
+    //       url("../img/services/fan.jpg") type("image/jpg")
+    //     );
+    // }
+
     &:nth-child(1) {
-      background-image: var(--grad1),
-        image-set(
-          url("../img/services/fan.avif") type("image/avif"),
-          url("../img/services/fan.webp") type("image/webp"),
-          url("../img/services/fan.jpg") type("image/jpg")
-        );
+      background-image: var(--grad1), url("../img/services/fan.jpg");
     }
 
     &:nth-child(2) {
