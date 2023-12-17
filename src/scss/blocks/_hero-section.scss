@@ -148,6 +148,10 @@
       width: 90vw;
       transform: translateX(-50%);
     }
+
+    @media (max-width: 320px) {
+      width: 280px;
+    }
   }
 
   @media (max-width: 599px) {
@@ -157,6 +161,12 @@
   @media (max-width: 599px) {
     &__btn {
       width: 100%;
+    }
+  }
+
+  @media (max-width: 320px) {
+    &__btn {
+      width: rem(280);
     }
   }
 }

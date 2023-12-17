@@ -112,14 +112,23 @@ function changeCounter(slider) {
 
 let circles = document.querySelectorAll('.circle');
 const circlesScale = gsap.timeline();
+const title = document.querySelector('h1');
+let circlesScaleInit;
 
-let circlesScaleInit = circlesScale.from(circles, {
-  delay: 0,
-  duration: 1.2,
-  opacity: 0,
-  scale: 0,
-  stagger: 0.1,
-  ease: 'elastic.out(1.5,0.75)',
+let mm = gsap.matchMedia();
+mm.add('(min-width: 1024px)', () => {
+  circlesScaleInit = circlesScale.from(circles, {
+    delay: 0,
+    duration: 1.2,
+    opacity: 0,
+    scale: 0,
+    stagger: 0.1,
+    ease: 'elastic.out(1.5,0.75)',
+  });
+});
+
+mm.add('(max-width: 1023.9px)', () => {
+  circlesScaleInit = circlesScale.from(title, { opacity: 0 });
 });
 
 // Change BG on hero-section
@@ -128,14 +137,24 @@ function changeBg(slider) {
   const section = document.querySelector('.hero');
   const slideIndex = slider.activeIndex;
   const bgArr = ['bg1', 'bg2', 'bg3'];
-  section.removeAttribute('style');
-  bgArr.forEach((bg, i) => {
-    if (slideIndex === i) {
-      section.setAttribute('data-bg', bg);
-      section.style.setProperty(`--${bg}-opacity`, '0.1');
-    } else {
-      // section.style.setProperty('--bg-opacity', '0');
-    }
+
+  let mm = gsap.matchMedia();
+
+  mm.add('(min-width: 1024px)', () => {
+    section.removeAttribute('style');
+    bgArr.forEach((bg, i) => {
+      if (slideIndex === i) {
+        section.setAttribute('data-bg', bg);
+        section.style.setProperty(`--${bg}-opacity`, '0.1');
+      } else {
+        // section.style.setProperty('--bg-opacity', '0');
+      }
+    });
+  });
+
+  mm.add('(max-width: 1023.9px)', () => {
+    section.setAttribute('data-bg', bgArr[0]);
+    section.style.setProperty(`--${bgArr[0]}-opacity`, '0.1');
   });
 }
 

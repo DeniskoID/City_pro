@@ -13,6 +13,7 @@
   font-size: 16px;
   color: var(--text-color);
   background-color: var(--white-color);
+  -webkit-overflow-scrolling: touch !important;
 }
 
 img {

@@ -14,6 +14,12 @@ html.lenis {
   overflow: hidden;
 }
 
+.lenis-stopped .page-body {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
